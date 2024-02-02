@@ -65,32 +65,26 @@ const addRoleQs = [{
     name: "depID",
     choices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }]
+
+//function to use the inquirer package to prompt the user for input
 const askQs = (questions) => {
     return inquirer.prompt(questions)
 }
 
+//function to grab all data from employee table with the manager names replacing their ids
 const viewEmp = () => {
-    db.query('SELECT * FROM employee', function (err, results) {
+    db.query("SELECT e.id, e.first_name, e.last_name, e.role_id, CONCAT (m.first_name, ' ', m.last_name) AS manager FROM employee e LEFT JOIN employee m ON e.manager_id = m.id", function (err, results) {
         if (err) {
             console.error(err);
         } else {
             console.log("\n")
             console.table(results);
         }
+        initialChoice();
     });
-    initialChoice();
 }
 
-const recentAdd = () => {
-    db.query('SELECT * FROM employee ORDER BY id DESC LIMIT 1', function (err, results) {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log("\n")
-            console.table(results);
-        }
-    });
-}
+//function to add employee based on user input to the employee table
 const addEmp = async () => {
     try {
         const response = await askQs(addEmpQs);
@@ -102,7 +96,6 @@ const addEmp = async () => {
                     console.error(err);
                 } else {
                     console.log("\nEmployee added successfully!\n");
-                    initialChoice();
                 }
             }
         )
@@ -112,11 +105,26 @@ const addEmp = async () => {
     }
 }
 
+//function to view the recent added employee/ only to be used after adding an employee with addEmp()
+const recentAdd = () => {
+    db.query('SELECT * FROM employee ORDER BY id DESC LIMIT 1', function (err, results) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("\n")
+            console.table(results);
+        }
+        initialChoice();
+    });
+}
+
+//function to update employee's role in employee table
 const updateEmp = async () => {
     response = await askQs(updateQs),
         updatedRole = db.query(`UPDATE employee SET role_id = '${response.newRole}' WHERE employee.first_name = '${response.empName}'`);
 }
 
+//function to view all data from roles table
 const viewRoles = async () => {
     db.query('SELECT * FROM roles', function (err, results) {
         if (err) {
@@ -125,10 +133,11 @@ const viewRoles = async () => {
             console.log("\n")
             console.table(results);
         }
+        initialChoice();
     });
-    initialChoice();
 }
 
+//function to add role to roles table based on user input
 const addRole = async () => {
     try {
         const response = await askQs(addRoleQs);
@@ -141,15 +150,16 @@ const addRole = async () => {
                 } else {
                     console.log("\nRole added successfully!\n");
                 }
+                initialChoice();
             }
         )
     }
     catch (error) {
         console.error(error);
     }
-    initialChoice();
 }
 
+//function to pull all department names from the department table
 const viewDep = async () => {
     db.query('SELECT department.name FROM department', function (err, results) {
         if (err) {
@@ -158,10 +168,11 @@ const viewDep = async () => {
             console.log("\n")
             console.table(results);
         }
+        initialChoice();
     });
-    initialChoice();
 }
 
+//function to add departments to the department table based on user input
 const addDep = async () => {
     try {
         const response = await askQs(
@@ -177,15 +188,16 @@ const addDep = async () => {
                 } else {
                     console.log("\nDepartment added successfully!\n");
                 }
+                initialChoice();
             }
         )
     }
     catch (error) {
         console.error(error);
     }
-    initialChoice();
 }
 
+//switch case for all instances of the initial prompts from mainMenu
 const initialChoice = async () => {
     await askQs(mainMenu)
         .then(async response => {
