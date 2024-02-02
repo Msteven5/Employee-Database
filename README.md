@@ -27,7 +27,7 @@ I, Michael Davidson am the only one that contributed to this code using mySQL, J
 
 ## Tests
 
-[Walkthrough Video](<../../OneDrive/Desktop/Untitled_ Feb 1, 2024 11_57 PM.webm>)
+Walkthrough Video Link: https://drive.google.com/file/d/1kYzcbTxauoEktM_7TH4Xuge-scpzSsHi/view
 
 Run the application in the Terminal/CLI after having NODE and the dependencies listed in "installation" installed, to run the application and have access to a basic employee database.
 
@@ -37,6 +37,6 @@ Msdavid55@gmail.com feel free to send an email over to ask any questions or voic
 
 https://github.com/Msteven5
 
-Walkthrough Video Link: https://drive.google.com/file/d/1kYzcbTxauoEktM_7TH4Xuge-scpzSsHi/view
+
 
 
