@@ -24,3 +24,6 @@ VALUES  ("Matt", "Smith", 2, null),
         ("Matthew", "McConaughey", 5, 5),
         ("Michael", "Jackson", 4, 3);
         
+        SELECT r.id, r.title, r.salary, d.name AS department 
+        FROM roles r 
+        JOIN department d ON r.department_id = d.id

@@ -126,7 +126,7 @@ const updateEmp = async () => {
 
 //function to view all data from roles table
 const viewRoles = async () => {
-    db.query('SELECT * FROM roles', function (err, results) {
+    db.query('SELECT r.id, r.title, r.salary, d.name AS department FROM roles r JOIN department d ON r.department_id = d.id', function (err, results) {
         if (err) {
             console.error(err);
         } else {
