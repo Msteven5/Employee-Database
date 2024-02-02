@@ -13,8 +13,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30),
 salary DECIMAL,
 department_id INT,
-FOREIGN KEY(department_id)
-REFERENCES department(id)
+FOREIGN KEY(department_id) REFERENCES department(id)
 ON DELETE SET NULL
 );
 
