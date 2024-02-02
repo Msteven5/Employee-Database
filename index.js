@@ -107,19 +107,3 @@ const initialChoice = async () => {
     }
 
 initialChoice();
-
-// Departments
-//         1 produce,
-//         2 cosmetics,
-//         3 bakery,
-//         4 deli,
-//         5 dairy,
-//         6 customer service
-
-//         Roles
-//         1 cashier,
-//         2 dairy associate,
-//         3 representative,
-//         4 baker,
-//         5 salesperson,
-//         6 butcher

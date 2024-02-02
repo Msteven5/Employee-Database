@@ -23,7 +23,3 @@ VALUES  ("Matt", "Smith", 2, null),
         ("Matthew", "Perry", 1, 1),
         ("Matthew", "McConaughey", 5, 5),
         ("Michael", "Jackson", 4, 3);
-
--- SELECT employee_name, manager_name
--- FROM employees e1
--- JOIN employees e2 ON e1.manager_id = e2.employee_id;
